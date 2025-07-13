@@ -22,8 +22,9 @@ export const columns: ColumnDef<Category>[] = [
 					<Button size="sm" asChild>
 						<Link
 							href={`/dashboard/categories/edit/${category.id}`}
+							className="text-white"
 						>
-							<Edit className="w-4 h-4 mr-2" /> Edit
+							<Edit className="w-4 h-4 mr-2 stroke-white" /> Edit
 						</Link>
 					</Button>
 					<FormDelete id={category.id} />

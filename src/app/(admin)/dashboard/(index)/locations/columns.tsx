@@ -15,16 +15,17 @@ export const columns: ColumnDef<Location>[] = [
 	{
 		id: "actions",
 		cell: ({ row }) => {
-			const category = row.original;
+			const location = row.original;
 
 			return (
 				<div className="space-x-4 inline-flex">
 					<Button size="sm" asChild>
-						<Link href={`/dashboard/locations/edit/${category.id}`}>
-							<Edit className="w-4 h-4 mr-2" /> Edit
+						<Link href={`/dashboard/locations/edit/${location.id}`}
+							className="text-white">
+							<Edit className="w-4 h-4 mr-2 stroke-white" /> Edit
 						</Link>
 					</Button>
-					<FormDelete id={category.id} />
+					<FormDelete id={location.id} />
 				</div>
 			);
 		},
