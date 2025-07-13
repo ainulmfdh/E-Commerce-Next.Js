@@ -5,7 +5,7 @@ import { ActionResult } from "@/types";
 import { redirect } from "next/navigation";
 import prisma from "../../../../../../../lib/prisma";
 
-export async function postCategory(
+export async function postLocation(
 	_: unknown,
 	formData: FormData
 ): Promise<ActionResult> {
@@ -35,7 +35,7 @@ export async function postCategory(
 	return redirect("/dashboard/locations");
 }
 
-export async function updateCategory(
+export async function updateLocation(
 	_: unknown,
 	formData: FormData,
 	id: number | undefined
@@ -75,7 +75,7 @@ export async function updateCategory(
 	return redirect("/dashboard/locations");
 }
 
-export async function deleteCategory(
+export async function deleteLocation(
 	_: unknown,
 	formData: FormData,
 	id: number

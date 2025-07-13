@@ -38,8 +38,9 @@ export const columns: ColumnDef<Brand>[] = [
 			return (
 				<div className="space-x-4 inline-flex">
 					<Button size="sm" asChild>
-						<Link href={`/dashboard/brands/edit/${brand.id}`}>
-							<Edit className="w-4 h-4 mr-2" /> Edit
+						<Link href={`/dashboard/brands/edit/${brand.id}`}
+							className="text-white">
+							<Edit className="w-4 h-4 mr-2 stroke-white" /> Edit
 						</Link>
 					</Button>
 					<FormDelete id={brand.id} />

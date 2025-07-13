@@ -11,7 +11,7 @@ export async function getLocations() {
 	}
 }
 
-export async function getCategoryById(id: string) {
+export async function getLocationById(id: string) {
 	try {
 		const category = await prisma.location.findFirst({
 			where: {

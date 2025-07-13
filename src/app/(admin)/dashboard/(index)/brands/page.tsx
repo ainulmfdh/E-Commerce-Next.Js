@@ -21,8 +21,8 @@ export default async function BrandPage() {
 			<div className="text-right">
 				<Button size="sm" className="h-8 gap-1" asChild>
 					<Link href="/dashboard/brands/create">
-						<PlusCircle className="h-3.5 w-3.5" />
-						<span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+						<PlusCircle className="h-3.5 w-3.5 stroke-white" />
+						<span className="sr-only sm:not-sr-only sm:whitespace-nowrap text-white">
 							Add Brand
 						</span>
 					</Link>
