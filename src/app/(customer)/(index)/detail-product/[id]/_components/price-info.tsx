@@ -11,12 +11,10 @@ interface PriceInfoProp {
     isLogIn: boolean
 }
 
-export default function PriceInfo({item, isLogIn}: PriceInfoProp) {
-    const {addProduct} = useCart()
+export default function PriceInfo({ item, isLogIn }: PriceInfoProp) {
+    const { addProduct } = useCart()
 
     const router = useRouter()
-
-
 
     const checkout = () => {
         const newCart: TCart = {
@@ -29,8 +27,8 @@ export default function PriceInfo({item, isLogIn}: PriceInfoProp) {
         router.push('/carts')
     }
 
-  return (
-    <div className="w-[302px] flex flex-col shrink-0 gap-5 h-fit">
+    return (
+        <div className="w-[302px] flex flex-col shrink-0 gap-5 h-fit">
             <div className="w-full bg-white border border-[#E5E5E5] flex flex-col gap-[30px] p-[30px] rounded-3xl">
                 <div className="flex flex-col gap-1">
                     <p className="font-semibold">Brand New</p>
@@ -90,5 +88,5 @@ export default function PriceInfo({item, isLogIn}: PriceInfoProp) {
                 </div>
             </a>
         </div>
-  )
+    )
 }
