@@ -5,7 +5,7 @@ import { ActionResult } from "@/types";
 import { Trash } from "lucide-react";
 import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
-import { deleteCategory } from "../lib/actions";
+import { deleteLocation } from "../lib/actions";
 
 const initialState: ActionResult = {
 	error: "",
@@ -33,7 +33,7 @@ function SubmitButton() {
 
 export default function FormDelete({ id }: FormDeleteProps) {
 	const deleteCategoryWithId = (_: unknown, formData: FormData) =>
-		deleteCategory(_, formData, id);
+		deleteLocation(_, formData, id);
 
 	const [state, formAction] = useFormState(
 		deleteCategoryWithId,
