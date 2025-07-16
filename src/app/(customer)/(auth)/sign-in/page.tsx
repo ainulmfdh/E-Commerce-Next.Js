@@ -40,16 +40,17 @@ export default function SignInPage() {
 					<div className="flex justify-center">
 						<img src="./assets/logos/logo-black.svg" alt="logo" />
 					</div>
+
+					{state.error !== "" && (
+						<div className="border border-red-300 text-red-500 p-3 rounded">
+							<h4 className="font-semibold">Error</h4>
+							<p className="text-sm">{state.error}</p>
+						</div>
+					)}
+
 					<h1 className="font-bold text-2xl leading-[34px]">
 						Sign In
 					</h1>
-
-                    {state.error !== "" && (
-                        <div className="border border-red-300 text-red-500 p-3 rounded">
-                            <h4 className="font-semibold">Error</h4>
-                            <p className="text-sm">{state.error}</p>
-                        </div>
-                    )}
 
 					<div className="flex items-center gap-[10px] rounded-full border border-[#E5E5E5] p-[12px_20px] focus-within:ring-2 focus-within:ring-[#FFC736] transition-all duration-300">
 						<div className="flex shrink-0">

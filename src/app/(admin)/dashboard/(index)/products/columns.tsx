@@ -27,26 +27,26 @@ export const columns: ColumnDef<TColumn>[] = [
     {
         accessorKey: 'name',
         header: 'Name',
-        cell: ({row}) => {
-            const product = row.original            
+        cell: ({ row }) => {
+            const product = row.original
 
             return (
                 <div className="inline-flex items-center gap-5">
-					<Image
-						src={getImageUrl(product.image_url, 'products')}
-						alt="Product"
-						width={80}
-						height={80}
-					/>
-					<span>{product.name}</span>
-				</div>
+                    <Image
+                        src={getImageUrl(product.image_url, 'products')}
+                        alt="Product"
+                        width={80}
+                        height={80}
+                    />
+                    <span>{product.name}</span>
+                </div>
             )
         }
     },
     {
         accessorKey: 'price',
         header: 'Price',
-        cell: ({row}) => {
+        cell: ({ row }) => {
             const product = row.original
 
             return rupiahFormat(product.price)
@@ -55,7 +55,7 @@ export const columns: ColumnDef<TColumn>[] = [
     {
         accessorKey: 'stock',
         header: 'Status',
-        cell: ({row}) => {
+        cell: ({ row }) => {
             const product = row.original
 
             return <Badge variant={'outline'}>{product.stock}</Badge>
@@ -68,27 +68,28 @@ export const columns: ColumnDef<TColumn>[] = [
     {
         accessorKey: 'createdAt',
         header: 'Created At',
-        cell: ({row}) => {
+        cell: ({ row }) => {
             const product = row.original
 
             return dateFormat(product.createdAt)
         }
     },
     {
-		id: "actions",
-		cell: ({ row }) => {
-			const product = row.original;
+        id: "actions",
+        cell: ({ row }) => {
+            const product = row.original;
 
-			return (
-				<div className="space-x-4 inline-flex">
-					<Button size="sm" asChild>
-						<Link href={`/dashboard/products/edit/${product.id}`}>
-							<Edit className="w-4 h-4 mr-2" /> Edit
-						</Link>
-					</Button>
-					<FormDelete id={product.id} />
-				</div>
-			);
-		},
-	},
+            return (
+                <div className="space-x-4 inline-flex">
+                    <Button size="sm" asChild>
+                        <Link href={`/dashboard/products/edit/${product.id}`}
+                            className="text-white">
+                            <Edit className="w-4 h-4 mr-2 stroke-white" /> Edit
+                        </Link>
+                    </Button>
+                    <FormDelete id={product.id} />
+                </div>
+            );
+        },
+    },
 ]
