@@ -23,7 +23,7 @@ export const columns: ColumnDef<TColumn>[] = [
   {
     accessorKey: 'products',
     header: 'Products',
-    cell: ({row}) => {
+    cell: ({ row }) => {
       const order = row.original
 
       return (
@@ -31,12 +31,12 @@ export const columns: ColumnDef<TColumn>[] = [
           {order.products.map((item, i) => (
             <div key={`${item.name + i}`} className="inline-flex items-center gap-5">
               <Image
-						src={item.image}
-						alt="Product"
-						width={80}
-						height={80}
-					/>
-					<span>{item.name}</span>
+                src={item.image}
+                alt="Product"
+                width={80}
+                height={80}
+              />
+              <span>{item.name}</span>
             </div>
           ))}
         </div>
@@ -50,12 +50,12 @@ export const columns: ColumnDef<TColumn>[] = [
   {
     accessorKey: 'price',
     header: 'Total Price',
-    cell: ({row}) => rupiahFormat(row.original.price)
+    cell: ({ row }) => rupiahFormat(row.original.price)
   },
   {
     accessorKey: 'status',
     header: 'Status Order',
-    cell: ({row}) => {
+    cell: ({ row }) => {
       return (
         <Badge variant={row.original.status === "failed" ? "destructive" : "default"}>
           {row.original.status}

@@ -3,6 +3,7 @@ import Navbar from "./_components/navbar";
 import ListCategory from "./_components/list-category";
 import ListProducts from "./_components/list-products";
 import ListBrands from "./_components/list-brands";
+import Footer from "./_components/footer";
 
 export default function LandingPage() {
 	return (
@@ -155,29 +156,30 @@ export default function LandingPage() {
 				</Suspense>
 				<Suspense fallback={<span>Loading...</span>}>
 
-                <ListProducts
-					title={
-						<>
-							Most Picked <br /> Quality Products
-						</>
-					}
-				/>
-                </Suspense>
-				
-                    <Suspense fallback={<span>Loading...</span>}>
-                    <ListBrands />
-                    </Suspense>
+					<ListProducts
+						title={
+							<>
+								Most Picked <br /> Quality Products
+							</>
+						}
+					/>
+				</Suspense>
 
 				<Suspense fallback={<span>Loading...</span>}>
-                <ListProducts
-					title={
-						<>
-							New Releases <br /> From Official Stores
-						</>
-					}
-				/>
-                </Suspense>
+					<ListBrands />
+				</Suspense>
+
+				<Suspense fallback={<span>Loading...</span>}>
+					<ListProducts
+						title={
+							<>
+								New Releases <br /> From Official Stores
+							</>
+						}
+					/>
+				</Suspense>
 			</section>
+			<Footer />
 		</>
 	);
 }

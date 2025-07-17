@@ -3,10 +3,10 @@ import Link from 'next/link'
 import React from 'react'
 
 export default async function Navbar() {
-    const {session, user} = await getUser()
+    const { session, user } = await getUser()
 
-  return (
-    <nav className="container max-w-[1130px] mx-auto flex items-center justify-between bg-[#0D5CD7] p-5 rounded-3xl">
+    return (
+        <nav className="container max-w-[1130px] mx-auto flex items-center justify-between bg-[#0D5CD7] p-5 rounded-3xl">
             <div className="flex shrink-0">
                 <img src="/assets/logos/logo.svg" alt="icon" />
             </div>
@@ -32,22 +32,22 @@ export default async function Navbar() {
                 </Link>
                 {session && user.role === "customer" ? (
                     <>
-                    <p className="text-white">Hi, {user.name}</p>
-                <div className="w-[48px] h-[48px] flex shrink-0 rounded-full p-1 border border-[#E5E5E5] overflow-hidden">
-                    <img src="/assets/photos/p4.png" className="w-full h-full object-cover rounded-full" alt="photo" />
-                </div>
+                        <p className="text-white">Hi, {user.name}</p>
+                        <div className="w-[48px] h-[48px] flex shrink-0 rounded-full p-1 border border-[#E5E5E5] overflow-hidden">
+                            <img src="/assets/photos/p4.png" className="w-full h-full object-cover rounded-full" alt="photo" />
+                        </div>
                     </>
                 ) : (
                     <>
-                    <Link href="/sign-in" className="p-[12px_20px] bg-white rounded-full font-semibold">
-                    Sign In
-                </Link>
-                <Link href="/sign-up" className="p-[12px_20px] bg-white rounded-full font-semibold">
-                    Sign Up
-                </Link>
+                        <Link href="/sign-in" className="p-[12px_20px] bg-white rounded-full font-semibold">
+                            Sign In
+                        </Link>
+                        <Link href="/sign-up" className="p-[12px_20px] bg-white rounded-full font-semibold">
+                            Sign Up
+                        </Link>
                     </>
                 )}
             </div>
         </nav>
-  )
+    )
 }

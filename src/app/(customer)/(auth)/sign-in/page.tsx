@@ -5,6 +5,9 @@ import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { signIn } from "../lib/actions";
 import Link from "next/link";
+import CircularProgress from '@mui/material/CircularProgress';
+import { Button } from "@/components/ui/button";
+
 
 const initialFormState: ActionResult = {
 	error: "",
@@ -14,13 +17,15 @@ function SubmitButton() {
 	const { pending } = useFormStatus();
 
 	return (
-		<button
-			disabled={pending}
-			type="submit"
-			className="p-[12px_24px] bg-[#0D5CD7] rounded-full text-center font-semibold text-white"
-		>
-			{pending ? "Loading..." : "Sign In to My Account"}
-		</button>
+
+
+		<Button type="submit" className="p-[12px_24px] bg-[#0D5CD7] rounded-full text-center font-semibol">
+			{pending ? (
+				<CircularProgress size={25} color="inherit" />
+			) : (
+				"Sign In"
+			)}
+		</Button>
 	);
 }
 

@@ -18,6 +18,7 @@ import { ActionResult } from "@/types";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Terminal } from "lucide-react";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const initialState: ActionResult = {
 	error: "",
@@ -27,9 +28,14 @@ function SubmitButton() {
 	const { pending } = useFormStatus();
 
 	return (
-		<Button type="submit" className="w-full" disabled={pending}>
-			{pending ? "Loading..." : "Sign in"}
+		<Button type="submit" className="w-full text-white flex items-center justify-center gap-2" disabled={pending}>
+			{pending ? (
+				<CircularProgress size={20} color="inherit" />
+			) : (
+				"Sign in"
+			)}
 		</Button>
+
 	);
 }
 
@@ -40,7 +46,7 @@ export default function FormSignIn() {
 		<form action={formAction}>
 			<Card className="w-full max-w-sm">
 				<CardHeader>
-					<CardTitle className="text-2xl">Login</CardTitle>
+					<CardTitle className="text-2xl">Login Admin</CardTitle>
 					<CardDescription>
 						Enter your email below to login to your account.
 					</CardDescription>
@@ -61,7 +67,7 @@ export default function FormSignIn() {
 							name="email"
 							id="email"
 							type="email"
-							placeholder="m@example.com"
+							placeholder="name@example.com"
 						/>
 					</div>
 					<div className="grid gap-2">

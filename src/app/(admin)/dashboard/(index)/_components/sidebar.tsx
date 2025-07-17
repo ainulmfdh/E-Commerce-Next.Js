@@ -1,7 +1,9 @@
+"use client"
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
-    Archive,
+	Archive,
 	Building,
 	Home,
 	LineChart,
@@ -23,6 +25,19 @@ import {
 import FormLogout from "./form-logout";
 
 export default function Sidebar() {
+	const pathname = usePathname();
+
+	const menuItems = [
+		{ href: "/dashboard", icon: <Home className="h-5 w-5" />, label: "Dashboard" },
+		{ href: "/dashboard/categories", icon: <Archive className="h-5 w-5" />, label: "Categories" },
+		{ href: "/dashboard/locations", icon: <MapPin className="h-5 w-5" />, label: "Locations" },
+		{ href: "/dashboard/brands", icon: <Building className="h-5 w-5" />, label: "Brands" },
+		{ href: "/dashboard/products", icon: <Package className="h-5 w-5" />, label: "Products" },
+		{ href: "/dashboard/orders", icon: <ShoppingCart className="h-5 w-5" />, label: "Orders" },
+		{ href: "/dashboard/customers", icon: <Users2 className="h-5 w-5" />, label: "Customers" },
+	];
+
+
 	return (
 		<TooltipProvider>
 			<aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
@@ -34,90 +49,32 @@ export default function Sidebar() {
 						<Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
 						<span className="sr-only">Acme Inc</span>
 					</Link>
-					<Tooltip>
-						<TooltipTrigger asChild>
-							<Link
-								href="#"
-								className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-							>
-								<Home className="h-5 w-5" />
-								<span className="sr-only">Dashboard</span>
-							</Link>
-						</TooltipTrigger>
-						<TooltipContent side="right">Dashboard</TooltipContent>
-					</Tooltip>
-                    <Tooltip>
-						<TooltipTrigger asChild>
-							<Link
-								href="/dashboard/categories"
-								className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-							>
-								<Archive className="h-5 w-5" />
-								<span className="sr-only">Categories</span>
-							</Link>
-						</TooltipTrigger>
-						<TooltipContent side="right">Categories</TooltipContent>
-					</Tooltip>
-                    <Tooltip>
-						<TooltipTrigger asChild>
-							<Link
-								href="/dashboard/locations"
-								className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-							>
-								<MapPin className="h-5 w-5" />
-								<span className="sr-only">Locations</span>
-							</Link>
-						</TooltipTrigger>
-						<TooltipContent side="right">Locations</TooltipContent>
-					</Tooltip>
-                    <Tooltip>
-						<TooltipTrigger asChild>
-							<Link
-								href="/dashboard/brands"
-								className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-							>
-								<Building className="h-5 w-5" />
-								<span className="sr-only">brands</span>
-							</Link>
-						</TooltipTrigger>
-						<TooltipContent side="right">brands</TooltipContent>
-					</Tooltip>
-                    <Tooltip>
-						<TooltipTrigger asChild>
-							<Link
-								href="/dashboard/products"
-								className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-							>
-								<Package className="h-5 w-5" />
-								<span className="sr-only">Products</span>
-							</Link>
-						</TooltipTrigger>
-						<TooltipContent side="right">Products</TooltipContent>
-					</Tooltip>
-					<Tooltip>
-						<TooltipTrigger asChild>
-							<Link
-								href="/dashboard/orders"
-								className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-							>
-								<ShoppingCart className="h-5 w-5" />
-								<span className="sr-only">Orders</span>
-							</Link>
-						</TooltipTrigger>
-						<TooltipContent side="right">Orders</TooltipContent>
-					</Tooltip>
-					<Tooltip>
-						<TooltipTrigger asChild>
-							<Link
-								href="/dashboard/customers"
-								className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-							>
-								<Users2 className="h-5 w-5" />
-								<span className="sr-only">Customers</span>
-							</Link>
-						</TooltipTrigger>
-						<TooltipContent side="right">Customers</TooltipContent>
-					</Tooltip>
+
+					{menuItems.map((item) => {
+						const isActive =
+							item.href === "/dashboard"
+								? pathname === "/dashboard"
+								: pathname.startsWith(item.href);
+
+						return (
+							<Tooltip key={item.href}>
+								<TooltipTrigger asChild>
+									<Link
+										href={item.href}
+										className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8 
+            ${isActive
+												? "bg-accent text-accent-foreground"
+												: "text-muted-foreground hover:text-foreground"}
+          `}
+									>
+										{item.icon}
+										<span className="sr-only">{item.label}</span>
+									</Link>
+								</TooltipTrigger>
+								<TooltipContent side="right">{item.label}</TooltipContent>
+							</Tooltip>
+						);
+					})}
 				</nav>
 				<FormLogout />
 			</aside>
