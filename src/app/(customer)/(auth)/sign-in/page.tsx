@@ -19,7 +19,7 @@ function SubmitButton() {
 	return (
 
 
-		<Button type="submit" className="p-[12px_24px] bg-[#0D5CD7] rounded-full text-center font-semibol">
+		<Button type="submit" className="p-[12px_24px] bg-[#0D5CD7] rounded-full text-center font-bold text-md leading-[34px]">
 			{pending ? (
 				<CircularProgress size={25} color="inherit" />
 			) : (

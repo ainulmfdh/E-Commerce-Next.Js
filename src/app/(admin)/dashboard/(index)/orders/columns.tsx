@@ -30,12 +30,12 @@ export const columns: ColumnDef<TColumn>[] = [
         <div className="flex flex-col gap-4 justify-start">
           {order.products.map((item, i) => (
             <div key={`${item.name + i}`} className="inline-flex items-center gap-5">
-              <Image
+              {/* <Image
                 src={item.image}
                 alt="Product"
                 width={80}
                 height={80}
-              />
+              /> */}
               <span>{item.name}</span>
             </div>
           ))}
