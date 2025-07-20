@@ -18,7 +18,7 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const {session} = await getUser()
+	const { session } = await getUser()
 
 	if (!session) {
 		return redirect('/dashboard/sign-in')
