@@ -72,7 +72,7 @@ export async function POST(request: Request) {
                 }
             })
         }
-        
+
 
         const products = await prisma.product.findMany({
             where: {
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
                 price: true
             }
         })
-        
+
 
         const response: TProduct[] = products.map((product) => {
             return {
@@ -106,6 +106,6 @@ export async function POST(request: Request) {
 
     } catch (error) {
         console.log(error);
-        return Response.json({status: false}, {status: 500})
+        return Response.json({ status: false }, { status: 500 })
     }
 }
