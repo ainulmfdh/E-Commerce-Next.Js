@@ -27,10 +27,11 @@ interface StatCardProps {
 
 interface TableRowProps {
   name: string;
-  progress: number;
-  quantity: number;
+  brand: string;
+  stock: string;
+  price: number;
   date: string;
-  status?: 'approved' | 'disabled' | 'error';
+  // status?: 'approved' | 'disabled' | 'error';
 }
 
 interface TaskItemProps {
@@ -49,7 +50,7 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, subtitle, icon, color
   </div>
 );
 
-const TableRow: React.FC<TableRowProps> = ({ name, progress, quantity, date, status }) => {
+const TableRow: React.FC<TableRowProps> = ({ name, brand, stock, price, date }) => {
   const getStatusIcon = () => {
     switch (status) {
       case 'approved':
@@ -71,8 +72,9 @@ const TableRow: React.FC<TableRowProps> = ({ name, progress, quantity, date, sta
           <span className="text-white text-sm">{name}</span>
         </div>
       </td>
-      <td className="py-3 text-white text-sm">{progress}%</td>
-      <td className="py-3 text-white text-sm">{quantity}</td>
+      <td className="py-3 text-white text-sm">{brand}</td>
+      <td className="py-3 text-white text-sm">{stock}</td>
+      <td className="py-3 text-white text-sm">{price}</td>
       <td className="py-3 text-gray-400 text-sm">{date}</td>
     </tr>
   );
@@ -108,18 +110,18 @@ const Dashboard: React.FC = () => {
   ];
 
   const tableData = [
-    { name: 'Horizon UI PRO', progress: 17.5, quantity: 2458, date: '12 Jan 2021', status: 'approved' as const },
-    { name: 'Horizon UI Free', progress: 10.8, quantity: 1485, date: '21 Feb 2021', status: 'disabled' as const },
-    { name: 'Weekly Update', progress: 21.3, quantity: 1024, date: '13 Mar 2021', status: 'approved' as const },
-    { name: 'Venus 3D Asset', progress: 31.5, quantity: 858, date: '24 Jan 2021', status: 'approved' as const },
-    { name: 'Marketplace', progress: 12.2, quantity: 258, date: '24 Oct 2022', status: 'error' as const },
+    { name: 'Horizon UI PRO', brand: 'Samsung', stock: 'ready', price: 500000, date: '12 Jan 2025', status: 'approved' as const },
+    { name: 'Horizon UI Free', brand: 'Apple', stock: 'ready', price: 500000, date: '21 Feb 2025', status: 'disabled' as const },
+    { name: 'Weekly Update', brand: 'Xiaomi', stock: 'ready', price: 500000, date: '13 Mar 2025', status: 'approved' as const },
+    { name: 'Venus 3D Asset', brand: 'Huawei', stock: 'ready', price: 500000, date: '24 Jan 2025', status: 'approved' as const },
+    { name: 'Marketplace', brand: 'Vivo', stock: 'ready', price: 500000, date: '24 Oct 2025', status: 'error' as const },
   ];
 
   const complexTableData = [
-    { name: 'Horizon UI PRO', status: 'approved' as const, date: '18 Apr 2022', progress: 75 },
-    { name: 'Horizon UI Free', status: 'disabled' as const, date: '18 Apr 2022', progress: 35 },
-    { name: 'Marketplace', status: 'error' as const, date: '20 May 2021', progress: 90 },
-    { name: 'Weekly Updates', status: 'approved' as const, date: '12 Jul 2021', progress: 40 },
+    { name: 'Horizon UI PRO', status: 'approved' as const, date: '18 Apr 2025', brand: 75 },
+    { name: 'Horizon UI Free', status: 'disabled' as const, date: '18 Apr 2025', brand: 35 },
+    { name: 'Marketplace', status: 'error' as const, date: '20 May 2025', brand: 90 },
+    { name: 'Weekly Updates', status: 'approved' as const, date: '12 Jul 2025', brand: 40 },
   ];
 
   const tasks = [
@@ -194,7 +196,7 @@ const Dashboard: React.FC = () => {
             {/* Check Table */}
             <div className="lg:col-span-2 bg-slate-800 rounded-xl p-6">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-white font-semibold">Check Table</h3>
+                <h3 className="text-white font-semibold">List Products</h3>
                 <MoreHorizontal className="w-5 h-5 text-gray-400 cursor-pointer" />
               </div>
 
@@ -203,8 +205,9 @@ const Dashboard: React.FC = () => {
                   <thead>
                     <tr className="border-b border-slate-700">
                       <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">Name</th>
-                      <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">Progress</th>
-                      <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">Quantity</th>
+                      <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">Stock</th>
+                      <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">Brand</th>
+                      <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">Price</th>
                       <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">Date</th>
                     </tr>
                   </thead>
@@ -322,7 +325,7 @@ const Dashboard: React.FC = () => {
                       <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">Name</th>
                       <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">Status</th>
                       <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">Date</th>
-                      <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">Progress</th>
+                      <th className="text-left text-gray-400 text-xs uppercase tracking-wider py-3">brand</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -342,7 +345,7 @@ const Dashboard: React.FC = () => {
                           <div className="w-full bg-slate-700 rounded-full h-2">
                             <div
                               className="bg-purple-600 h-2 rounded-full"
-                              style={{ width: `${row.progress}%` }}
+                              style={{ width: `${row.brand}%` }}
                             ></div>
                           </div>
                         </td>

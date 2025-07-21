@@ -1,13 +1,13 @@
 export type ActionResult = {
-	error: string;
+    error: string;
 };
 
 export type Tparams = {
-	id: string;
+    id: string;
 };
 
 export type Tedit = {
-	params: Tparams;
+    params: Tparams;
 };
 
 export type TProduct = {
@@ -18,4 +18,4 @@ export type TProduct = {
     price: number
 }
 
-export type TCart = TProduct & {quantity: number}
+export type TCart = TProduct & { quantity: number }
